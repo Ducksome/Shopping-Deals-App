@@ -1,11 +1,16 @@
 <template>
     <header>
-       <Button icon="pi pi-align-justify" @click="$emit('burgerClicked')" class="p-button-rounded p-button-secondary p-button-outlined menu-burger" />
-       <h2>Shopping Deals App</h2> 
+       <h2 class="brand">Shopping Deals App</h2> 
        <nav>
-         <ul>
+         <ul class="nav-links">
            <li>
-             <router-link to="/register" class="nav-link">Register</router-link>
+             <router-link to="/register" class="link">Today's Selection</router-link>
+           </li>
+           <li>
+             <router-link to="/register" class="link">Categories</router-link>
+           </li>
+           <li>
+             <router-link to="/register" class="link"><button>Sign Up</button></router-link>
            </li>
          </ul>
        </nav>
@@ -13,36 +18,58 @@
 </template>
 
 <style scoped>
+li, .link, button {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: #edf0f1;
+  text-decoration: none;
+}
+
 header {
-  width: 100%;
-  height: 5rem;    
-  background-color: #000;
   display: flex;
+  justify-content: flex-end;
   align-items: center;
+  padding: 10px 5%;
+  background-color: #083a85;
 }
 
 h2 {
   color: #fff;
-  justify-self: center;
-  width: 100%
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: #edf0f1;
+    margin-right: auto;
 }
 
-ul {
+.nav-links {
   list-style: none;
 }
 
-.menu-burger {
-  justify-self: flex-start;
-  left: 20px
+.nav-links li {
+  display: inline-block;
+  padding: 0px 20px;
 }
 
-.nav-link {
-  text-decoration: none;
-  color: #000;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 15px;
-  float: right;
-  align-self: center;
+.nav-links li a {
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+.nav-links li a:hover {
+  color: rgb(0, 130, 169);
+}
+
+button {
+  padding: 9px 25px;
+  background-color: rgb(28, 194, 130);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: rgb(0, 130, 169);
 }
 </style>

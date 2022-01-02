@@ -1,16 +1,11 @@
 import {createApp} from 'vue';
 import App from './App.vue';
-import PrimeVue from 'primevue/config';
 import router from './router'
 import { initializeApp } from "firebase/app";
-
-import 'primevue/resources/themes/tailwind-light/theme.css'
-import 'primeicons/primeicons.css';
-import 'primevue/resources/primevue.min.css'
-
-import Button from 'primevue/button'
-import Sidebar from 'primevue/sidebar'
-import InputText from 'primevue/inputtext'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEye, faEyeSlash } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import * as firebase from 'firebase'
 
 const firebaseConfig = {
     apiKey: "AIzaSyBJAbtUWJbs8-VMGocy9BoHb7L4zw6ixZY",
@@ -22,12 +17,11 @@ const firebaseConfig = {
 };
 
 initializeApp(firebaseConfig);
-  
 
-const app = createApp(App).use(router);
-app.use(PrimeVue, {ripple: true});
-app.component('Button', Button)
-app.component('Sidebar', Sidebar)
-app.component('InputText', InputText)
+const app = createApp(App).use(router).use(firebase);
+
+library.add(faEye, faEyeSlash)
+
+app.component('FontAwesomeIcon', FontAwesomeIcon)
 
 app.mount('#app');

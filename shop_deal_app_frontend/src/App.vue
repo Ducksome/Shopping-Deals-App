@@ -1,13 +1,6 @@
 <template>
         <div>
-          <Navbar @burger-clicked="visibleLeft = true" />
-          <!-- eslint-disable-next-line -->
-          <Sidebar v-model:visible="visibleLeft" :baseZIndex="1000">
-            <ul>
-              <li></li>
-            </ul>
-          </Sidebar>
-
+          <Navbar />
           <router-view />
         </div>
 </template>
@@ -15,20 +8,16 @@
 <script>
 import Navbar from './components/Navbar.vue';
 
-import { ref } from 'vue';
-
 export default { 
     components: {
       Navbar
     },
-    setup() {
-      const visibleLeft = ref(false);
-      return { visibleLeft };
-    }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
 html, body {
   margin: 0px !important;
   padding: 0px !important;
