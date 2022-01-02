@@ -7,19 +7,24 @@ export function useAuth() {
     return React.useContext(AuthContext)
 }
 
-const AuthProvider = ({children}) => {
+export const AuthProvider = ({children}) => {
     const [currentUser, setCurrentUser] = React.useState(false);
 
     function signup(email, password) {
-        auth.createUserWithEmailandPassword(email, password)
+        return auth.createUserWithEmailandPassword(email, password)
     }
 
     React.useEffect(() => {
-        const unsubscribe
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            setCurrentUser(user)
+        })
+
+        return unsubscribe
     }, [])
 
     const value = {
-        currentUser: currentUser
+        currentUser,
+        signup
     }
 
     return ( 
